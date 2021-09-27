@@ -12,15 +12,14 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/drinks', (req,res)=>{
-    res.send(drinks);
+    res.render('drinks_index.ejs', {
+        allDrinks: drinks,
+    });
 });
 
 
-app.get('/drinks/:idx', (req, res)=>{
-    res.render('drinks_index.ejs', {
-        drink: drinks[req.params.idx],
-        index: req.params.idx,
-    });
+app.get('/drinks/:id', (req, res)=>{
+    res.send(req.params.id);
 });
 
 
