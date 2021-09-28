@@ -1,5 +1,6 @@
 const express = require('express');
 const drinks = require('./models/drinks');
+const foods = require('./models/food')
 
 
 const app = express();
@@ -14,6 +15,7 @@ app.get('/', (req, res)=>{
 app.get('/drinks', (req,res)=>{
     res.render('drinks_index.ejs', {
         allDrinks: drinks,
+        allFoods: foods,
     });
 });
 
@@ -21,6 +23,12 @@ app.get('/drinks', (req,res)=>{
 app.get('/drinks/:id', (req, res)=>{
     res.render('drinks_show.ejs', {
         drink: drinks[req.params.id],
+    });
+});
+
+app.get('/foods/:id', (req, res) => {
+    res.render('foods_show.ejs', {
+        food: foods[req.params.id],
     });
 });
 
